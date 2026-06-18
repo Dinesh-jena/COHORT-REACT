@@ -22,13 +22,14 @@ const FeatchRQ = () => {
 
     // useEffect(()=>{getPostData();},[])
 
-    const [pageNumber, setPageNumber] = useState(0)
+    const [pageNumber, setPageNumber] = useState(0);
 
    const {data,isLoading,isError,error} =  useQuery({
         queryKey:['posts',pageNumber], //usestate ka kamm kar raha hai 
         queryFn:()=>apiFetch(pageNumber), 
         // gcTime:1000,
         // staleTime:10000, //useEffact ka 
+        refetchInterval:10000,
     })
 
     if(isLoading) return <p>Loading...</p>;
